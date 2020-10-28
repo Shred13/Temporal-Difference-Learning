@@ -152,3 +152,5 @@ print("\n\n\nPennies without anchor")
 pennies_algo_1()
 print("\n\n\nPennies with anchor")
 pennies_algo_2()
+
+# todo do the rock paper scissors one, part 1, make graphs for each one and add the value for each game
