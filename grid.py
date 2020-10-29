@@ -188,7 +188,6 @@ class Grid:
             return largest
 
     def draw_policy(self):
-        print("grid")
         policy = [[0 for j in range(len(self.grid))] for i in range(len(self.grid))]
         for i in range(len(self.grid)):
             for j in range(len(self.grid[i])):
@@ -196,10 +195,11 @@ class Grid:
                 term = self.grid_largest(i, j)
                 policy[i][j] = term
             print(([''.join(['{:8}'.format(item) for item in self.grid[i]])]))
-        print("\n\n\n")
+        print("\n")
 
         for i in range(len(policy)):
             print(([''.join(['{:8}'.format(item) for item in policy[i]])]))
+        print("\n")
 
 
 grid_with_5_75 = Grid(5, 0.75)
@@ -207,15 +207,17 @@ print("Grid 5x5 with 0.75 Discount")
 grid_with_5_75.grid_iterations()
 grid_with_5_75.draw_policy()
 
-# grid_with_7_75 = Grid(7, 0.75)
-# print("Grid 7x7 with 0.75 Discount")
-# grid_with_7_75.grid_iterations()
-#
-# grid_with_5_85 = Grid(5, 0.85)
-# print("Grid 5x5 with 0.85 Discount")
-# grid_with_5_85.grid_iterations()
-#
-# grid_with_7_85 = Grid(7, 0.85)
-# print("Grid 7x7 with 0.85 Discount")
-# grid_with_7_85.grid_iterations()
-# todo get the policy iterations in the beginning done
+grid_with_7_75 = Grid(7, 0.75)
+print("Grid 7x7 with 0.75 Discount")
+grid_with_7_75.grid_iterations()
+grid_with_7_75.draw_policy()
+
+grid_with_5_85 = Grid(5, 0.85)
+print("Grid 5x5 with 0.85 Discount")
+grid_with_5_85.grid_iterations()
+grid_with_5_85.draw_policy()
+
+grid_with_7_85 = Grid(7, 0.85)
+print("Grid 7x7 with 0.85 Discount")
+grid_with_7_85.grid_iterations()
+grid_with_7_85.draw_policy()
