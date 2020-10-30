@@ -20,7 +20,7 @@ def prisoners_algo_1():
             person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1])
 
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][1] * person_1_prob[0]
-            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][1] *  person_2_prob[0]
+            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][1] * person_2_prob[0]
 
         elif(person_1_action <= person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][1] * (1-person_1_prob[0])
@@ -154,3 +154,42 @@ print("\n\n\nPennies with anchor")
 pennies_algo_2()
 
 # todo do the rock paper scissors one, part 1, make graphs for each one and add the value for each game
+def rock_paper_scissors():
+    person_1_prob = [0.6, 0.2, 0.2]
+    person_2_prob = [0.6, 0.2, 0.2]
+    p1_rewards = [[0, -1, 1], [1, 0, -1], [-1, 1, 0]]
+    p2_rewards = [[0, 1, -1], [-1, 0, 1], [1, -1, 0]]
+    alpha = 0.001
+    person1_action1 = []
+    person1_action2 = []
+    person1_action3 = []
+
+    person2_action1 = []
+    person2_action2 = []
+    person2_action3 = []
+
+    for i in range(100000):
+        person1_action1.append(person_1_prob[0])
+        person1_action2.append(person_1_prob[1])
+        person1_action3.append(person_1_prob[2])
+
+        person2_action1.append(person_2_prob[0])
+        person2_action2.append(person_2_prob[1])
+        person2_action3.append(person_2_prob[3])
+
+        person_1_action = random.random()
+        person_2_action = random.random()
+
+        # scissors and scissors
+        if(0 <= person_1_action <= person_1_prob[0]) and (0 <= person_2_action <= person_2_prob[0]):
+
+            person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1-person_1_prob[1]) + alpha * (sum(person1_action2)/len(person1_action2) - person_1_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1]) + alpha * (sum(person2_action2)/len(person2_action2) - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1]) + alpha * (
+                        sum(person2_action2) / len(person2_action2) - person_2_prob[1])
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][1] * person_1_prob[0] + alpha * (sum(person1_action1)/len(person1_action1) - person_1_prob[0])
+            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][1] * person_2_prob[0] + alpha * (sum(person2_action1)/len(person2_action1) - person_2_prob[0])
+
+
+

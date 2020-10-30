@@ -112,9 +112,9 @@ class Grid:
 
     def grid_largest(self, i, j):
         if i == self.a[0] and j == self.a[1]:
-            return str(self.a_prime[0]) + ", " + str(self.a_prime[1])
+            return str(self.a_prime[0]+1) + ", " + str(self.a_prime[1]+1)
         elif i == self.b[0] and j == self.b[1]:
-            return str(self.b_prime[0]) + ", " + str(self.b_prime[1])
+            return str(self.b_prime[0]+1) + ", " + str(self.b_prime[1]+1)
 
         elif i == 0 and j == 0:
             if self.grid[i + 1][j] > self.grid[i][j + 1]:
