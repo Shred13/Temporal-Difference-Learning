@@ -53,6 +53,7 @@ def pennies_algo_1():
     person_1_prob = [0.2, 0.8]
     person_2_prob = [0.2, 0.8]
     p1_rewards = [[1, -1], [-1, 1]]
+    p2_rewards = [[-1, 1], [1, -1]]
     alpha = 0.001
     for i in range(50000):
         person_1_action = random.random()
@@ -60,31 +61,31 @@ def pennies_algo_1():
 
         if(person_1_action > person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1-person_1_prob[1])
-            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[1][1] * (1 - person_2_prob[1])
 
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][1] * person_1_prob[0]
-            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][1] *  person_2_prob[0]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][1] *  person_2_prob[0]
 
         elif(person_1_action <= person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][1] * (1-person_1_prob[0])
-            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][0] * (1 - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[0][1] * (1 - person_2_prob[1])
 
             person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][1] * person_1_prob[1]
-            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][0] * person_2_prob[0]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[0][1] * person_2_prob[0]
 
         elif(person_1_action <= person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][0] * (1-person_1_prob[0])
-            person_2_prob[0] = person_2_prob[0] + alpha * p1_rewards[0][0] * (1 - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[0][0] * (1 - person_2_prob[0])
 
             person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][0] * person_1_prob[1]
-            person_2_prob[1] = person_2_prob[1] - alpha * p1_rewards[0][0] * person_2_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[0][0] * person_2_prob[1]
 
         elif(person_1_action > person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][0] * (1 - person_1_prob[1])
-            person_2_prob[0] = person_2_prob[0] + alpha * p1_rewards[0][1] * (1 - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[1][0] * (1 - person_2_prob[0])
 
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][0] * person_1_prob[0]
-            person_2_prob[1] = person_2_prob[1] - alpha * p1_rewards[0][1] * person_2_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][0] * person_2_prob[1]
 
         if i % 1000 == 0:
             to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
@@ -96,6 +97,7 @@ def pennies_algo_2():
     person_1_prob = [0.2, 0.8]
     person_2_prob = [0.2, 0.8]
     p1_rewards = [[1, -1], [-1, 1]]
+    p2_rewards = [[-1, 1], [1, -1]]
     alpha = 0.001
     person1_action1 = []
     person1_action2 = []
@@ -114,31 +116,31 @@ def pennies_algo_2():
 
         if(person_1_action > person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1-person_1_prob[1]) + alpha * (sum(person1_action2)/len(person1_action2) - person_1_prob[1])
-            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1]) + alpha * (sum(person2_action2)/len(person2_action2) - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[1][1] * (1 - person_2_prob[1]) + alpha * (sum(person2_action2)/len(person2_action2) - person_2_prob[1])
 
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][1] * person_1_prob[0] + alpha * (sum(person1_action1)/len(person1_action1) - person_1_prob[0])
-            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][1] * person_2_prob[0] + alpha * (sum(person2_action1)/len(person2_action1) - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][1] * person_2_prob[0] + alpha * (sum(person2_action1)/len(person2_action1) - person_2_prob[0])
 
         elif(person_1_action <= person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][1] * (1-person_1_prob[0]) + alpha * (sum(person1_action1)/len(person1_action1) - person_1_prob[0])
-            person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][0] * (1 - person_2_prob[1]) + alpha * (sum(person2_action2)/len(person1_action1) - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[0][1] * (1 - person_2_prob[1]) + alpha * (sum(person2_action2)/len(person1_action1) - person_2_prob[1])
 
             person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][1] * person_1_prob[1] + alpha * (sum(person1_action2)/len(person1_action1) - person_1_prob[1])
-            person_2_prob[0] = person_2_prob[0] - alpha * p1_rewards[1][0] * person_2_prob[0] + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[0][1] * person_2_prob[0] + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
 
         elif(person_1_action <= person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][0] * (1-person_1_prob[0]) + alpha * (sum(person1_action1)/len(person1_action1) - person_1_prob[0])
-            person_2_prob[0] = person_2_prob[0] + alpha * p1_rewards[0][0] * (1 - person_2_prob[0]) + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[0][0] * (1 - person_2_prob[0]) + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
 
             person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][0] * person_1_prob[1] + alpha * (sum(person1_action2)/len(person1_action2) - person_1_prob[1])
-            person_2_prob[1] = person_2_prob[1] - alpha * p1_rewards[0][0] * person_2_prob[1] + alpha * (sum(person2_action2)/len(person2_action2) - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[0][0] * person_2_prob[1] + alpha * (sum(person2_action2)/len(person2_action2) - person_2_prob[1])
 
         elif(person_1_action > person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][0] * (1 - person_1_prob[1]) + alpha * (sum(person1_action2)/len(person1_action1) - person_1_prob[1])
-            person_2_prob[0] = person_2_prob[0] + alpha * p1_rewards[0][1] * (1 - person_2_prob[0]) + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[1][0] * (1 - person_2_prob[0]) + alpha * (sum(person2_action1)/len(person1_action1) - person_2_prob[0])
 
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][0] * person_1_prob[0] + alpha * (sum(person1_action1)/len(person1_action1) - person_1_prob[0])
-            person_2_prob[1] = person_2_prob[1] - alpha * p1_rewards[0][1] * person_2_prob[1] + alpha * (sum(person2_action2)/len(person1_action1) - person_2_prob[1])
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][0] * person_2_prob[1] + alpha * (sum(person2_action2)/len(person1_action1) - person_2_prob[1])
 
         if i % 1000 == 0:
             to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
