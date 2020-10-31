@@ -8,11 +8,19 @@ import matplotlib.pyplot as plt
 
 
 def prisoners_algo_1():
+    person1_action1 = []
+    person1_action2 = []
+    person2_action1 = []
+    person2_action2 = []
     person_1_prob = [0.5, 0.5]
     person_2_prob = [0.5, 0.5]
     p1_rewards = [[5, 0], [10, 1]]
     alpha = 0.001
     for i in range(50000):
+        person1_action1.append(person_1_prob[0])
+        person1_action2.append(person_1_prob[1])
+        person2_action1.append(person_2_prob[0])
+        person2_action2.append(person_2_prob[1])
         person_1_action = random.random()
         person_2_action = random.random()
 
@@ -49,15 +57,26 @@ def prisoners_algo_1():
             to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
             print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Prisoners with Anchor")
 
 
 def pennies_algo_1():
+
+    person1_action1 = []
+    person1_action2 = []
+    person2_action1 = []
+    person2_action2 = []
     person_1_prob = [0.2, 0.8]
     person_2_prob = [0.2, 0.8]
+
     p1_rewards = [[1, -1], [-1, 1]]
     p2_rewards = [[-1, 1], [1, -1]]
     alpha = 0.001
     for i in range(50000):
+        person1_action1.append(person_1_prob[0])
+        person1_action2.append(person_1_prob[1])
+        person2_action1.append(person_2_prob[0])
+        person2_action2.append(person_2_prob[1])
         person_1_action = random.random()
         person_2_action = random.random()
 
@@ -94,6 +113,7 @@ def pennies_algo_1():
             to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
             print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+        plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Pennies without Anchor")
 
 def pennies_algo_2():
     person_1_prob = [0.2, 0.8]
@@ -380,6 +400,7 @@ def rock_paper_scissors():
             to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
             print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors with Anchor")
 
 def plottr(p1, p2, title):
     x = [i for i in range(len(p1[0]))]
