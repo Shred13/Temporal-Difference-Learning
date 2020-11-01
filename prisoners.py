@@ -75,7 +75,7 @@ def pennies_algo_1():
     p1_rewards = [[1, -1], [-1, 1]]
     p2_rewards = [[-1, 1], [1, -1]]
     alpha = 0.001
-    for i in range(500000):
+    for i in range(300000):
         person1_action1.append(person_1_prob[0])
         person1_action2.append(person_1_prob[1])
         person2_action1.append(person_2_prob[0])
@@ -137,7 +137,7 @@ def pennies_algo_2():
     sum1_action2 = 0
     sum2_action2 = 0
     
-    for i in range(500000):
+    for i in range(5000000):
         person1_action1.append(person_1_prob[0])
         sum1_action1 += person_1_prob[0]
         person1_action2.append(person_1_prob[1])
@@ -451,7 +451,7 @@ def rock_paper_scissors_unanchored():
     person2_action2 = []
     person2_action3 = []
 
-    for i in range(500000):
+    for i in range(300000):
         person1_action1.append(person_1_prob[0])
         person1_action2.append(person_1_prob[1])
         person1_action3.append(person_1_prob[2])
@@ -605,8 +605,8 @@ def plottr(p1, p2, title):
 
 
 def matrix_multiplier(prob1, prob2, reward):
-    row1 = prob1[0] * reward[0][0] + prob1[1] * reward[0][1]
-    row2 = prob1[0] * reward[1][0] + prob1[1] * reward[1][1]
+    row1 = prob1[0] * reward[0][0] + prob1[1] * reward[1][0]
+    row2 = prob1[0] * reward[0][1] + prob1[1] * reward[1][1]
     final_scaler = row1*prob2[0] + row2*prob2[1]
     return final_scaler
 
