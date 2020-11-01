@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="575602f7-7209-4781-a86d-a172b855f9a4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Prisoners Dilemma.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/prisoners.py" beforeDir="false" afterPath="$PROJECT_DIR$/prisoners.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +42,7 @@
   </component>
   <component name="JupyterTrust" id="075c7dca-c5a2-4b05-b2be-52d0744ba61c" />
   <component name="ProjectId" id="1jG5FrEwlMxhdmcWSNslbALSjT7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,17 +98,17 @@
       <method v="2" />
     </configuration>
     <configuration name="prisoners" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Prisoners Dilemma" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/venv/QMIND/Delirium/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prisoners.py" />
       <option name="PARAMETERS" value="" />
@@ -111,6 +119,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.grid" />
+      <item itemvalue="Python.prisoners" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.prisoners" />
@@ -131,7 +144,8 @@
       <workItem from="1603905092526" duration="6035000" />
       <workItem from="1603935808394" duration="471000" />
       <workItem from="1603994397237" duration="2014000" />
-      <workItem from="1604171964855" duration="2545000" />
+      <workItem from="1604171964855" duration="7183000" />
+      <workItem from="1604237886594" duration="204000" />
     </task>
     <servers />
   </component>
@@ -139,22 +153,26 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="419" key="GridCell.Tab.0.bottom" timestamp="1604174868002">
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604239103240">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="419" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604174868002" />
-    <state width="1398" height="419" key="GridCell.Tab.0.center" timestamp="1604174868000">
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1604239103240" />
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom" timestamp="1604185996832">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="419" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604174868000" />
-    <state width="1398" height="419" key="GridCell.Tab.0.left" timestamp="1604174867999">
+    <state width="1398" height="263" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604185996832" />
+    <state width="1398" height="263" key="GridCell.Tab.0.center" timestamp="1604185996831">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="419" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604174867999" />
-    <state width="1398" height="419" key="GridCell.Tab.0.right" timestamp="1604174868001">
+    <state width="1398" height="263" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604185996831" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left" timestamp="1604185996831">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="419" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604174868001" />
+    <state width="1398" height="263" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604185996831" />
+    <state width="1398" height="263" key="GridCell.Tab.0.right" timestamp="1604185996832">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="263" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604185996832" />
     <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1603919120398">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -198,6 +216,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$main.coverage" NAME="main Coverage Results" MODIFIED="1603425231191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$grid.coverage" NAME="grid Coverage Results" MODIFIED="1603995749593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Prisoners_Dilemma$prisoners.coverage" NAME="prisoners Coverage Results" MODIFIED="1604174867968" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Prisoners_Dilemma$prisoners.coverage" NAME="prisoners Coverage Results" MODIFIED="1604185996818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
