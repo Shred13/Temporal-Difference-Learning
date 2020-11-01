@@ -209,8 +209,6 @@ def pennies_algo_2():
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
 
 # todo do the rock paper scissors one, part 1, make graphs for each one and add the value for each game
-
-
 def rock_paper_scissors():
     # rock, paper, scissors
     person_1_prob = [0.6, 0.2, 0.2]
@@ -370,6 +368,8 @@ def rock_paper_scissors():
                         sum2_action1 / len(person2_action1) - person_2_prob[0])
         # [sr, sp, ss]
 
+
+        # [sr, sp, ss]
         # p1 scissor and rock
         elif (person_1_prob[0] + person_1_prob[1] <= person_1_action <= 1) and (
                 0 <= person_2_action <= person_2_prob[0]):
@@ -434,6 +434,160 @@ def rock_paper_scissors():
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
 
+
+def rock_paper_scissors_unanchored():
+    # rock, paper, scissors
+    person_1_prob = [0.6, 0.2, 0.2]
+    person_2_prob = [0.6, 0.2, 0.2]
+    # rewards for scenarios (abbreviated) [[rr, rp, rs], [pr, pp, ps], [sr, sp, ss]]
+    p1_rewards = [[0, -1, 1], [1, 0, -1], [-1, 1, 0]]
+    p2_rewards = [[0, 1, -1], [-1, 0, 1], [1, -1, 0]]
+    alpha = 0.001
+    person1_action1 = []
+    person1_action2 = []
+    person1_action3 = []
+
+    person2_action1 = []
+    person2_action2 = []
+    person2_action3 = []
+
+    for i in range(500000):
+        person1_action1.append(person_1_prob[0])
+        person1_action2.append(person_1_prob[1])
+        person1_action3.append(person_1_prob[2])
+
+        person2_action1.append(person_2_prob[0])
+        person2_action2.append(person_2_prob[1])
+        person2_action3.append(person_2_prob[2])
+
+        person_1_action = random.random()
+        person_2_action = random.random()
+
+        # rewards for scenarios (abbreviated) [[rr, rp, rs], [pr, pp, ps], [sr, sp, ss]]
+        # rock and rock
+        if (0 <= person_1_action <= person_1_prob[0]) and (0 <= person_2_action <= person_2_prob[0]):
+
+            person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][0] * (1 - person_1_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[0][0] * (1 - person_2_prob[0])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][0] * person_1_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[0][0] * person_2_prob[1]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[0][0] * person_1_prob[2]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[0][0] * person_2_prob[2]
+
+        # p1 rock and paper
+        # p2 paper and  rock
+        elif (0 <= person_1_action <= person_1_prob[0]) and (
+                person_2_prob[0] <= person_2_action <= person_2_prob[0] + person_2_prob[1]):
+
+            person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][1] * (1 - person_1_prob[0])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[0][1] * (1 - person_2_prob[1])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][1] * person_1_prob[1]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[0][1] * person_2_prob[0]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[0][1] * person_1_prob[2]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[0][1] * person_2_prob[2]
+
+        # p1 rock and scissors
+        # p2 scissors and rock
+        elif (0 <= person_1_action <= person_1_prob[0]) and (
+                person_2_prob[0] + person_2_prob[1] <= person_2_action <= 1):
+
+            person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][2] * (1 - person_1_prob[0])
+            person_2_prob[2] = person_2_prob[2] + alpha * p2_rewards[0][2] * (1 - person_2_prob[2])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[0][2] * person_1_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[0][2] * person_2_prob[1]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[0][2] * person_1_prob[2]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[0][2] * person_2_prob[0]
+
+
+
+        # [pr, pp, ps]
+        # p1 paper and rock
+        elif (person_1_prob[0] <= person_1_action <= person_1_prob[0] + person_1_prob[1]) and (
+                0 <= person_2_action <= person_2_prob[0]):
+            person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][0] * (1 - person_1_prob[1])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[1][0] * (1 - person_2_prob[0])
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][0] * person_1_prob[0]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][0] * person_2_prob[1]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[1][0] * person_1_prob[2]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[1][0] * person_2_prob[2]
+
+        # p1 paper and paper
+        elif (person_1_prob[0] <= person_1_action <= person_1_prob[0] + person_1_prob[1]) and (
+                person_2_prob[0] <= person_2_action <= person_2_prob[0] + person_2_prob[1]):
+
+            person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1 - person_1_prob[0])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[1][1] * (1 - person_2_prob[0])
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][1] * person_1_prob[0]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][1] * person_2_prob[0]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[1][1] * person_1_prob[0]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[1][1] * person_2_prob[0]
+
+        # p1 paper and scissor
+        elif (person_1_prob[0] <= person_1_action <= person_1_prob[0] + person_1_prob[1]) and (
+                person_2_prob[0] + person_2_prob[1] <= person_2_action <= 1):
+            person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][2] * (1 - person_1_prob[1])
+            person_2_prob[2] = person_2_prob[2] + alpha * p2_rewards[1][2] * (1 - person_2_prob[2])
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][2] * person_1_prob[0]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][2] * person_2_prob[1]
+
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[1][2] * person_1_prob[2]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][2] * person_2_prob[0]
+        # [sr, sp, ss]
+
+        # p1 scissor and rock
+        elif (person_1_prob[0] + person_1_prob[1] <= person_1_action <= 1) and (
+                0 <= person_2_action <= person_2_prob[0]):
+            person_1_prob[2] = person_1_prob[2] + alpha * p1_rewards[2][0] * (1 - person_1_prob[2])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[2][0] * (1 - person_2_prob[0])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[2][0] * person_1_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[2][0] * person_2_prob[1]
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[2][0] * person_1_prob[0]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[2][0] * person_2_prob[2]
+
+
+        # p1 scissor and paper
+        elif (person_1_prob[0] + person_1_prob[1] <= person_1_action <= 1) and (
+                person_2_prob[0] <= person_2_action <= person_2_prob[0] + person_2_prob[1]):
+            person_1_prob[2] = person_1_prob[2] + alpha * p1_rewards[2][1] * (1 - person_1_prob[2])
+            person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[2][1] * (1 - person_2_prob[1])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[2][1] * person_1_prob[1]
+            person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[2][1] * person_2_prob[0]
+
+            person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[2][1] * person_1_prob[0]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[2][1] * person_2_prob[2]
+
+        # p1 scissor and scissor
+        elif (person_1_prob[0] + person_1_prob[1] <= person_1_action <= 1) and (
+                person_2_prob[0] + person_2_prob[1] <= person_2_action <= 1):
+            person_1_prob[2] = person_1_prob[2] - alpha * p1_rewards[2][2] * person_1_prob[2]
+            person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[2][2] * person_2_prob[2]
+
+            person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[2][2] * (1 - person_1_prob[0])
+            person_2_prob[0] = person_2_prob[0] + alpha * p2_rewards[2][2] * (1 - person_2_prob[0])
+
+            person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[2][2] * person_1_prob[1]
+            person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[2][2] * person_2_prob[1]
+
+        if i % 10000 == 0:
+            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+
+    plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors with Anchor")
 
 def plottr(p1, p2, title):
     x = [i for i in range(len(p1[0]))]
