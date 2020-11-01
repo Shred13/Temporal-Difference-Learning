@@ -5,6 +5,7 @@ Authors: Shreyansh Anand, Anne Liu
 
 import random
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def prisoners_algo_1():
@@ -53,14 +54,17 @@ def prisoners_algo_1():
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][0] * person_1_prob[0]
             person_2_prob[1] = person_2_prob[1] - alpha * p1_rewards[0][1] * person_2_prob[1]
 
-        if i % 1000 == 0:
-            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
-            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
-            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+        # if i % 1000 == 0:
+        #     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+        #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+        #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-    plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Prisoners with Anchor")
+    plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Prisoners")
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
+    to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+    to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+    print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
 
 def pennies_algo_1():
@@ -111,14 +115,17 @@ def pennies_algo_1():
             person_1_prob[0] = person_1_prob[0] - alpha * p1_rewards[1][0] * person_1_prob[0]
             person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][0] * person_2_prob[1]
 
-        if i % 1000000 == 0:
-            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
-            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
-            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+        # if i % 1000000 == 0:
+        #     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+        #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+        #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
     plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Pennies without Anchor")
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
+    to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+    to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+    print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
 
 def pennies_algo_2():
@@ -199,14 +206,17 @@ def pennies_algo_2():
             person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[1][0] * person_2_prob[1] + alpha * (
                         sum2_action2 / len(person1_action1) - person_2_prob[1])
 
-        if i % 1000000 == 0:
-            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
-            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
-            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+        # if i % 1000000 == 0:
+        #     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+        #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+        #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
     plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Pennies with Anchor")
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob,  p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
+    to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+    to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+    print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
 # todo do the rock paper scissors one, part 1, make graphs for each one and add the value for each game
 def rock_paper_scissors():
@@ -425,14 +435,17 @@ def rock_paper_scissors():
             person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[2][2] * person_2_prob[1] + alpha * (
                         sum2_action2 / len(person2_action2) - person_2_prob[1])
 
-        if i % 1000000 == 0:
-            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
-            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
-            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+        # if i % 1000000 == 0:
+        #     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+        #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+        #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
     plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors with Anchor")
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
+    to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+    to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+    print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
 
 def rock_paper_scissors_unanchored():
@@ -451,7 +464,7 @@ def rock_paper_scissors_unanchored():
     person2_action2 = []
     person2_action3 = []
 
-    for i in range(300000):
+    for i in range(250000):
         person1_action1.append(person_1_prob[0])
         person1_action2.append(person_1_prob[1])
         person1_action3.append(person_1_prob[2])
@@ -582,40 +595,53 @@ def rock_paper_scissors_unanchored():
             person_1_prob[1] = person_1_prob[1] - alpha * p1_rewards[2][2] * person_1_prob[1]
             person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[2][2] * person_2_prob[1]
 
-        if i % 10000 == 0:
-            to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
-            to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
-            print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+        # if i % 10000 == 0:
+        #     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+        #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+        #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-    plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors with Anchor")
+    plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors without Anchor")
+    print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
+    print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
+    to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
+    to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
+    print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
+
 
 def plottr(p1, p2, title):
     x = [i for i in range(len(p1[0]))]
     for y in range(len(p1)):
-        plt.plot(x, p1[y], label="prob"+str(y+1))
+        plt.plot(x, p1[y], label="Probability of Action "+str(y+1))
     plt.title(title + " : Person 1")
+    plt.xlabel = "# of Iterations"
+    plt.ylabel = "Probability"
     plt.legend()
     plt.show()
 
     for y in range(len(p2)):
-        plt.plot(x, p2[y], label="prob2"+str(y+1))
+        plt.plot(x, p2[y], label="Probability of Action "+str(y+1))
     plt.legend()
     plt.title(title + " : Person 2")
+    plt.xlabel = "# of Iterations"
+    plt.ylabel = "Probability"
     plt.show()
 
 
 def matrix_multiplier(prob1, prob2, reward):
-    row1 = prob1[0] * reward[0][0] + prob1[1] * reward[1][0]
-    row2 = prob1[0] * reward[0][1] + prob1[1] * reward[1][1]
-    final_scaler = row1*prob2[0] + row2*prob2[1]
+    person_1 = np.transpose(np.array(prob1))
+    person_2 = np.array(prob2)
+    rewards = np.array(reward)
+    final_scaler = np.matmul(np.matmul(person_1, rewards), person_2)
     return final_scaler
 
-    # print("PRISONERS")
+
+print("PRISONERS")
 prisoners_algo_1()
-# print("\n\n\nPennies without anchor")
-# pennies_algo_1()
-# print("\n\n\nPennies with anchor")
+print("\n\n\nPennies without anchor")
+pennies_algo_1()
+print("\n\n\nPennies with anchor")
 pennies_algo_2()
-# print("\n\n\nPennies with anchor")
-# rock_paper_scissors()
 print("\n\n\nRock paper scissors with anchor")
+rock_paper_scissors()
+print("\n\n\nRock paper scissors without anchor")
+rock_paper_scissors_unanchored()
