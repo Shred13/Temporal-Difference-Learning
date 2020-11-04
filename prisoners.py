@@ -7,8 +7,9 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+#prisoner's dilemma optimal policy
 def prisoners_algo_1():
+    #instantiate variables
     person1_action1 = []
     person1_action2 = []
     person2_action1 = []
@@ -23,9 +24,12 @@ def prisoners_algo_1():
         person1_action2.append(person_1_prob[1])
         person2_action1.append(person_2_prob[0])
         person2_action2.append(person_2_prob[1])
+        # generate a random action
         person_1_action = random.random()
         person_2_action = random.random()
 
+        # update probability based on action
+        # the action taken is dependent on the probability, for instance, person_1_action > person_1_prob[0] is equivalent of person one defecting)
         if (person_1_action > person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1 - person_1_prob[1])
             person_2_prob[1] = person_2_prob[1] + alpha * p1_rewards[1][1] * (1 - person_2_prob[1])
@@ -59,16 +63,18 @@ def prisoners_algo_1():
         #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
         #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    # plot probability change
     plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Prisoners")
+    # results
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-
+#Finds pennies optimal policy without anchor
 def pennies_algo_1():
-
+    #instantiation
     person1_action1 = []
     person1_action2 = []
     person2_action1 = []
@@ -79,6 +85,8 @@ def pennies_algo_1():
     p1_rewards = [[1, -1], [-1, 1]]
     p2_rewards = [[-1, 1], [1, -1]]
     alpha = 0.001
+
+    #episodes
     for i in range(300000):
         person1_action1.append(person_1_prob[0])
         person1_action2.append(person_1_prob[1])
@@ -87,6 +95,7 @@ def pennies_algo_1():
         person_1_action = random.random()
         person_2_action = random.random()
 
+        # update probability based on action
         if (person_1_action > person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1 - person_1_prob[1])
             person_2_prob[1] = person_2_prob[1] + alpha * p2_rewards[1][1] * (1 - person_2_prob[1])
@@ -120,14 +129,16 @@ def pennies_algo_1():
         #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
         #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    # plot probability change
     plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Pennies without Anchor")
+    # results
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-
+#Finds pennies optimal policy with anchor
 def pennies_algo_2():
     person_1_prob = [0.2, 0.8]
     person_2_prob = [0.2, 0.8]
@@ -143,7 +154,8 @@ def pennies_algo_2():
     sum2_action1 = 0
     sum1_action2 = 0
     sum2_action2 = 0
-    
+
+    #episodes
     for i in range(5000000):
         person1_action1.append(person_1_prob[0])
         sum1_action1 += person_1_prob[0]
@@ -158,7 +170,8 @@ def pennies_algo_2():
         person_1_action = random.random()
         person_2_action = random.random()
 
-        # tails and tails
+        # update probability based on action
+        # p1:tails and p2:tails
         if (person_1_action > person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][1] * (1 - person_1_prob[1]) + alpha * (
                         sum1_action2 / len(person1_action2) - person_1_prob[1])
@@ -170,7 +183,7 @@ def pennies_algo_2():
             person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][1] * person_2_prob[0] + alpha * (
                         sum2_action1 / len(person2_action1) - person_2_prob[0])
 
-        # heads and tails
+        # p1:heads and p2:tails
         elif (person_1_action <= person_1_prob[0]) and (person_2_action > person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][1] * (1 - person_1_prob[0]) + alpha * (
                         sum1_action1 / len(person1_action1) - person_1_prob[0])
@@ -182,7 +195,7 @@ def pennies_algo_2():
             person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[0][1] * person_2_prob[0] + alpha * (
                         sum2_action1 / len(person1_action1) - person_2_prob[0])
 
-        # heads and heads
+        # p1:heads and p2:heads
         elif (person_1_action <= person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[0] = person_1_prob[0] + alpha * p1_rewards[0][0] * (1 - person_1_prob[0]) + alpha * (
                         sum1_action1/ len(person1_action1) - person_1_prob[0])
@@ -194,7 +207,7 @@ def pennies_algo_2():
             person_2_prob[1] = person_2_prob[1] - alpha * p2_rewards[0][0] * person_2_prob[1] + alpha * (
                         sum2_action2 / len(person2_action2) - person_2_prob[1])
 
-        # tail and heads
+        # p1:tail and p2:heads
         elif (person_1_action > person_1_prob[0]) and (person_2_action <= person_2_prob[0]):
             person_1_prob[1] = person_1_prob[1] + alpha * p1_rewards[1][0] * (1 - person_1_prob[1]) + alpha * (
                         sum1_action2 / len(person1_action1) - person_1_prob[1])
@@ -211,14 +224,16 @@ def pennies_algo_2():
         #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
         #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    # plot probability change
     plottr([person1_action1, person1_action2], [person2_action1, person2_action2], "Pennies with Anchor")
+    # results
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob,  p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-# todo do the rock paper scissors one, part 1, make graphs for each one and add the value for each game
+# Rock paper scissors optimal policy with anchor
 def rock_paper_scissors():
     # rock, paper, scissors
     person_1_prob = [0.6, 0.2, 0.2]
@@ -241,7 +256,8 @@ def rock_paper_scissors():
     sum2_action2 = 0
     sum1_action3 = 0
     sum2_action3 = 0
-    
+
+    #episodes
     for i in range(10000000):
         person1_action1.append(person_1_prob[0])
         sum1_action1 += person_1_prob[0]
@@ -260,7 +276,10 @@ def rock_paper_scissors():
         person_1_action = random.random()
         person_2_action = random.random()
 
+        # update probability based on action
         # rewards for scenarios (abbreviated) [[rr, rp, rs], [pr, pp, ps], [sr, sp, ss]]
+
+        # update for [rr, rp, rs]
         # rock and rock
         if (0 <= person_1_action <= person_1_prob[0]) and (0 <= person_2_action <= person_2_prob[0]):
 
@@ -278,6 +297,7 @@ def rock_paper_scissors():
                         sum1_action3 / len(person1_action3) - person_1_prob[2])
             person_2_prob[2] = person_2_prob[2] - alpha * p2_rewards[0][0] * person_2_prob[2] + alpha * (
                         sum2_action3 / len(person2_action3) - person_2_prob[2])
+
 
         # p1 rock and paper
         # p2 paper and  rock
@@ -376,7 +396,7 @@ def rock_paper_scissors():
                         sum1_action3 / len(person1_action3) - person_1_prob[2])
             person_2_prob[0] = person_2_prob[0] - alpha * p2_rewards[1][2] * person_2_prob[0] + alpha * (
                         sum2_action1 / len(person2_action1) - person_2_prob[0])
-        # [sr, sp, ss]
+
 
 
         # [sr, sp, ss]
@@ -440,16 +460,18 @@ def rock_paper_scissors():
         #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
         #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    # plot probability change
     plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors with Anchor")
+    # results
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-
+# Rock paper scissors optimal policy without anchor
 def rock_paper_scissors_unanchored():
-    # rock, paper, scissors
+    # initial probabilities: rock, paper, scissors
     person_1_prob = [0.6, 0.2, 0.2]
     person_2_prob = [0.6, 0.2, 0.2]
     # rewards for scenarios (abbreviated) [[rr, rp, rs], [pr, pp, ps], [sr, sp, ss]]
@@ -464,6 +486,7 @@ def rock_paper_scissors_unanchored():
     person2_action2 = []
     person2_action3 = []
 
+    #episodes
     for i in range(250000):
         person1_action1.append(person_1_prob[0])
         person1_action2.append(person_1_prob[1])
@@ -476,6 +499,7 @@ def rock_paper_scissors_unanchored():
         person_1_action = random.random()
         person_2_action = random.random()
 
+        # update probability based on action
         # rewards for scenarios (abbreviated) [[rr, rp, rs], [pr, pp, ps], [sr, sp, ss]]
         # rock and rock
         if (0 <= person_1_action <= person_1_prob[0]) and (0 <= person_2_action <= person_2_prob[0]):
@@ -600,14 +624,16 @@ def rock_paper_scissors_unanchored():
         #     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
         #     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
+    # plot probability change
     plottr([person1_action1, person1_action2, person1_action3], [person2_action1, person2_action2, person1_action3], "Rock Paper Scissors without Anchor")
+    # results
     print("final value for person 1: " + str(matrix_multiplier(person_1_prob, person_2_prob, p1_rewards)))
     print("final value for person 2: " + str(matrix_multiplier(person_2_prob, person_1_prob, p2_rewards)))
     to_print1 = [round(person_1_prob[i], 4) for i in range(len(person_1_prob))]
     to_print2 = [round(person_2_prob[i], 4) for i in range(len(person_2_prob))]
     print("person 1 probability: " + str(to_print1) + " person 2 probability: " + str(to_print2))
 
-
+#plots the probabilities with the x axis as the episodes and y axis as the probability of action
 def plottr(p1, p2, title):
     x = [i for i in range(len(p1[0]))]
     for y in range(len(p1)):
@@ -626,7 +652,7 @@ def plottr(p1, p2, title):
     plt.ylabel = "Probability"
     plt.show()
 
-
+#calculates the Game values
 def matrix_multiplier(prob1, prob2, reward):
     person_1 = np.transpose(np.array(prob1))
     person_2 = np.array(prob2)
