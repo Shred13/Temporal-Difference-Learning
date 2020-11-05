@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="575602f7-7209-4781-a86d-a172b855f9a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Prisoners Dilemma.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/part_1_of_assignment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisoners.py" beforeDir="false" afterPath="$PROJECT_DIR$/part_2_of_assignment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part_2_of_assignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/part_2_of_assignment.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +171,7 @@
       <workItem from="1604237886594" duration="4531000" />
       <workItem from="1604445962996" duration="183000" />
       <workItem from="1604514643082" duration="14946000" />
-      <workItem from="1604547631519" duration="2496000" />
+      <workItem from="1604547631519" duration="2994000" />
     </task>
     <servers />
   </component>
@@ -192,22 +183,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1604239103240" />
-    <state width="1398" height="270" key="GridCell.Tab.0.bottom" timestamp="1604549567708">
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom" timestamp="1604550755687">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="270" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604549567708" />
-    <state width="1398" height="270" key="GridCell.Tab.0.center" timestamp="1604549567707">
+    <state width="1398" height="183" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604550755687" />
+    <state width="1398" height="183" key="GridCell.Tab.0.center" timestamp="1604550755685">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="270" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604549567707" />
-    <state width="1398" height="270" key="GridCell.Tab.0.left" timestamp="1604549567706">
+    <state width="1398" height="183" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604550755685" />
+    <state width="1398" height="183" key="GridCell.Tab.0.left" timestamp="1604550755685">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="270" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604549567706" />
-    <state width="1398" height="270" key="GridCell.Tab.0.right" timestamp="1604549567707">
+    <state width="1398" height="183" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604550755685" />
+    <state width="1398" height="183" key="GridCell.Tab.0.right" timestamp="1604550755686">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="270" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604549567707" />
+    <state width="1398" height="183" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604550755686" />
     <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1603919120398">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -243,7 +234,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$part_1_of_assignment.coverage" NAME="part_1_of_assignment Coverage Results" MODIFIED="1604549173112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Prisoners_Dilemma$main.coverage" NAME="main Coverage Results" MODIFIED="1604549567693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Prisoners_Dilemma$main.coverage" NAME="main Coverage Results" MODIFIED="1604550633155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$part_2_of_assignment.coverage" NAME="part_2_of_assignment Coverage Results" MODIFIED="1604545897853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$grid.coverage" NAME="part_1_of_assignment Coverage Results" MODIFIED="1604546929055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Prisoners_Dilemma$prisoners.coverage" NAME="prisoners Coverage Results" MODIFIED="1604535432806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
