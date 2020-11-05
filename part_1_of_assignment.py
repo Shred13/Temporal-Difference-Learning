@@ -112,80 +112,48 @@ class Grid:
 
     def grid_largest(self, i, j):
         if i == self.a[0] and j == self.a[1]:
-            return str(self.a_prime[0]+1) + ", " + str(self.a_prime[1]+1)
+            return str(self.a_prime[0] + 1) + ", " + str(self.a_prime[1] + 1)
         elif i == self.b[0] and j == self.b[1]:
-            return str(self.b_prime[0]+1) + ", " + str(self.b_prime[1]+1)
+            return str(self.b_prime[0] + 1) + ", " + str(self.b_prime[1] + 1)
 
         elif i == 0 and j == 0:
-            if self.grid[i + 1][j] > self.grid[i][j + 1]:
-                return "⌄"
-            else:
-                return ">"
+            return "⌄" if self.grid[i + 1][j] > self.grid[i][j + 1] else ">"
+
         elif i == len(self.grid) - 1 and j == len(self.grid) - 1:
-            if self.grid[i - 1][j] > self.grid[i][j - 1]:
-                return "^"
-            else:
-                return "<"
+            return "^" if self.grid[i-1][j]>self.grid[i][j-1] else "<"
+
         elif i == len(self.grid) - 1 and j == 0:
-            if self.grid[i - 1][j] > self.grid[i][j + 1]:
-                return "^"
-            else:
-                return ">"
+            return "^" if self.grid[i-1][j] > self.grid[i][j+1] else ">"
+
         elif i == 0 and j == len(self.grid) - 1:
-            if self.grid[i + 1][j] > self.grid[i][j - 1]:
-                return "⌄"
-            else:
-                return "<"
+            return "⌄" if self.grid[i+1][j] > self.grid[i][j-1] else "<"
 
         elif i == 0 and j != 0:
-            largest = "⌄" if self.grid[i+1][j] > self.grid[i][j-1] else "<"
-            if largest == "⌄" and self.grid[i+1][j] > self.grid[i][j+1]:
-                return largest
-            elif largest == "⌄" and self.grid[i+1][j] <= self.grid[i][j+1]:
-                return ">"
-            elif largest == "<" and self.grid[i][j-1] > self.grid[i][j+1]:
-                return "<"
-            elif largest == "<" and self.grid[i][j-1] <= self.grid[i][j+1]:
-                return ">"
+            return self.vals_compare_three("⌄", self.grid[i + 1][j], "<", self.grid[i][j-1], ">", self.grid[i][j+1])
 
         elif i != 0 and j == 0:
-            largest = "⌄" if self.grid[i+1][j] > self.grid[i-1][j] else "^"
-            if largest == "⌄" and self.grid[i+1][j] > self.grid[i][j+1]:
-                return largest
-            elif largest == "⌄" and self.grid[i+1][j] <= self.grid[i][j+1]:
-                return ">"
-            elif largest == "^" and self.grid[i-1][j] > self.grid[i][j+1]:
-                return "^️"
-            elif largest == "^" and self.grid[i-1][j] <= self.grid[i][j+1]:
-                return ">"
+            return self.vals_compare_three("⌄", self.grid[i + 1][j], "^", self.grid[i-1][j], ">", self.grid[i][j+1])
 
         elif i == len(self.grid) - 1:
-            largest = "^" if self.grid[i - 1][j] > self.grid[i][j + 1] else ">"
-            if largest == "^" and self.grid[i - 1][j] > self.grid[i][j - 1]:
-                return largest
-            elif largest == "^" and self.grid[i - 1][j] <= self.grid[i][j - 1]:
-                return ">"
-            elif largest == ">" and self.grid[i][j + 1] > self.grid[i][j - 1]:
-                return ">"
-            elif largest == ">" and self.grid[i][j + 1] <= self.grid[i][j - 1]:
-                return ">"
+            return self.vals_compare_three("^", self.grid[i - 1][j], ">", self.grid[i][j+1], "<", self.grid[i][j-1])
 
         elif j == len(self.grid) - 1:
-            largest = "^" if self.grid[i - 1][j] > self.grid[i][j - 1] else "<"
-            if largest == "^" and self.grid[i - 1][j] > self.grid[i+1][j]:
-                return largest
-            elif largest == "^" and self.grid[i - 1][j] <= self.grid[i + 1][j]:
-                return "⌄"
-            elif largest == "<" and self.grid[i][j - 1] > self.grid[i+1][j]:
-                return largest
-            elif largest == "<" and self.grid[i][j - 1] <= self.grid[i+1][j]:
-                return "⌄"
+            return self.vals_compare_three("^", self.grid[i - 1][j], "<", self.grid[i][j-1], "⌄", self.grid[i+1][j])
 
         else:
-            largest_between_up_and_down = ("^",  self.grid[i - 1][j])  if self.grid[i - 1][j] > self.grid[i+1][j] else ("⌄",self.grid[i+1][j])
-            largest_between_left_and_right = (">", self.grid[i][j+1]) if self.grid[i][j+1] > self.grid[i][j-1] else (">️", self.grid[i][j-1])
-            largest = largest_between_left_and_right[0] if largest_between_left_and_right[1] > largest_between_up_and_down[1] else largest_between_up_and_down[0]
-            return largest
+            return self.vals_compare_four("^", self.grid[i-1][j], "⌄", self.grid[i+1][j], ">", self.grid[i][j+1], "<", self.grid[i][j-1])
+
+    def vals_compare_three(self, first_dir, first_point, second_dir, second_point, third_dir, third_point):
+        largest_between_first_and_second = (first_dir, first_point) if first_point > second_point else (second_dir, second_point)
+        largest_between_first_and_third = (first_dir, first_point) if first_point > third_point else (third_dir, third_point)
+        largest = largest_between_first_and_second[0] if largest_between_first_and_second[1] > largest_between_first_and_third[1] else largest_between_first_and_third[0]
+        return largest
+
+    def vals_compare_four(self, first_dir, first_point, second_dir, second_point, third_dir, third_point, fourth_dir, fourth_point):
+        largest_between_first_and_second = (first_dir, first_point) if first_point > second_point else (second_dir, second_point)
+        largest_between_third_and_fourth = (third_dir, third_point) if third_point > fourth_point else (fourth_dir, fourth_point)
+        largest = largest_between_first_and_second[0] if largest_between_first_and_second[1] > largest_between_third_and_fourth[1] else largest_between_third_and_fourth[0]
+        return largest
 
     def draw_policy(self):
         policy = [[0 for j in range(len(self.grid))] for i in range(len(self.grid))]
@@ -200,24 +168,3 @@ class Grid:
         for i in range(len(policy)):
             print(([''.join(['{:8}'.format(item) for item in policy[i]])]))
         print("\n")
-
-
-grid_with_5_75 = Grid(5, 0.75)
-print("Grid 5x5 with 0.75 Discount")
-grid_with_5_75.grid_iterations()
-grid_with_5_75.draw_policy()
-
-grid_with_7_75 = Grid(7, 0.75)
-print("Grid 7x7 with 0.75 Discount")
-grid_with_7_75.grid_iterations()
-grid_with_7_75.draw_policy()
-
-grid_with_5_85 = Grid(5, 0.85)
-print("Grid 5x5 with 0.85 Discount")
-grid_with_5_85.grid_iterations()
-grid_with_5_85.draw_policy()
-
-grid_with_7_85 = Grid(7, 0.85)
-print("Grid 7x7 with 0.85 Discount")
-grid_with_7_85.grid_iterations()
-grid_with_7_85.draw_policy()
